@@ -1,0 +1,20 @@
+@(pageDetails:PageDetails)
+
+@main("Create Account to dfsfs")(pageDetails){
+
+<div class="span8">
+	<div class="well">
+	<h3>Create a Post</h3>
+	  <form action="/Post/submitPost" method="post">
+		<div class="control-group">
+			<label>Title</label><input type="text" placeholder="Title" name="title">
+			<label>Content</label><textarea class="input-xlarge" id="input01" name="content"></textarea>
+			<div class="btn-group">
+			<button type="submit" class="btn" >Submit Post</button>
+			<a class="btn" href="/">Cancel</a>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+}

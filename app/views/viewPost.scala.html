@@ -1,0 +1,34 @@
+@(pageDetails:PageDetails)
+
+@main("Create Account to dfsfs")(pageDetails){
+
+<div class="span8">
+	<div class="well">
+	<div></div><h3>@pageDetails.currentPostDetails.currentPostView.title</h3><span class="label">Posted on @pageDetails.currentPostDetails.currentPostView.postedAt</span></div>
+		<div class="well">
+			<p>@pageDetails.currentPostDetails.currentPostView.content</p>
+		</div>
+		<div class="alert alert-info">
+    	<div></div><h6>Comments</h6><span class="label">Posted on @pageDetails.currentPostDetails.currentPostView.comments.size()</span></div>
+    	 @for(comment <- pageDetails.currentPostDetails.currentPostView.comments) {
+                      <div class="alert alert-info">
+                    	<a href="#">@comment.author</a>
+                    	<span class="label">Posted on @comment.postedAt</span>
+                    	<p>@comment.content</p>
+                     </div>	
+                    }
+    	</div>
+    	<div>
+    		<form action="@routes.PostController.displayPost(pageDetails.currentPostDetails.currentPostView.postId)" method="post">
+				<div class="control-group">
+				
+			<label>Add Comment</label><textarea class="input-xlarge" id="input01" name="comment"></textarea>
+			<div class="btn-group">
+			<button type="submit" class="btn" >Submit Comment</button>
+			</div>
+		</div>
+	</form>
+    	</div>
+	</div>
+</div>
+}

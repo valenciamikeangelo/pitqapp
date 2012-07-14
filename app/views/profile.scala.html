@@ -1,0 +1,81 @@
+@(pageDetails:PageDetails)
+
+@main("My Profile")(pageDetails){
+
+<div class="span8">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="span2">
+				<div class="well">
+				<h6>Quick Links</h6>
+				<ul class="nav nav-tabs nav-stacked">
+			        <li class="active"><a href="#">Messages</a></li>
+			        <li><a href="#">Posts (@pageDetails.currentUserDetails.posts.size())</a></li>
+			        <li><a href="#">Articles</a></li>
+			        <li><a href="#">Connections</a></li>
+			      </ul>
+				</div>
+			</div>
+			<div class="span5 well">
+				
+			</div>
+		</div>
+		<div class="container-fluid">
+	
+			<div class="span7 columns">
+          <h2>Example accordion</h2>
+          <p>Using the collapse plugin, we built a simple accordion style widget:</p>
+
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  Collapsible Group Item #1
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+                    @for(post <- pageDetails.currentUserDetails.posts) {
+                      <div class="alert alert-info">
+                    	<a href="@routes.PostController.displayPost(post.postId)">@post.title</a>
+                    	<p>@if(post.content.length()>50){
+                    		@post.content.substring(0,50)
+                    	}else{
+                    		@post.content.substring(0,post.content.length())
+                    	}
+                    	<a href="">Read More</a></p>
+                     </div>	
+                    }
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  Collapsible Group Item #2
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                  Collapsible Group Item #3
+                </a>
+              </div>
+              <div id="collapseThree" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+          </div>
+		</div>
+	
+	</div>
+</div>
+}
